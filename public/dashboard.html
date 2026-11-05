@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; }
+    button { padding: 8px 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Tableau de bord</h1>
+  <p id="bienvenue"></p>
+  <button id="deconnexion" type="button">Se déconnecter</button>
+
+  <script>
+    const utilisateur = sessionStorage.getItem('utilisateur');
+    if (!utilisateur) {
+      window.location.href = '/login.html';
+    } else {
+      document.getElementById('bienvenue').textContent = 'Bienvenue, ' + utilisateur;
+    }
+
+    document.getElementById('deconnexion').addEventListener('click', () => {
+      sessionStorage.removeItem('utilisateur');
+      window.location.href = '/login.html';
+    });
+  </script>
+</body>
+</html>

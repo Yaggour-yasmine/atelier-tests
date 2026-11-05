@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f3f4f6; display: flex; justify-content: center; padding-top: 80px; }
+    form { background: #fff; padding: 32px; border-radius: 8px; width: 320px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+    label { display: block; margin-top: 12px; font-size: 14px; }
+    input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+    button { width: 100%; margin-top: 20px; padding: 10px; background: #2563eb; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+    #erreur { color: #b91c1c; margin-top: 12px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <form id="formulaire">
+    <h1>Connexion</h1>
+    <label for="email">Email</label>
+    <input id="email" type="email" required>
+    <label for="motdepasse">Mot de passe</label>
+    <input id="motdepasse" type="password" required>
+    <button type="submit">Se connecter</button>
+    <p id="erreur" role="alert"></p>
+  </form>
+
+  <script>
+    // Compte de démonstration pour l'atelier (pas de vraie authentification).
+    const EMAIL_OK = 'admin@exemple.com';
+    const MOTDEPASSE_OK = 'secret123';
+
+    document.getElementById('formulaire').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const motdepasse = document.getElementById('motdepasse').value;
+
+      if (email === EMAIL_OK && motdepasse === MOTDEPASSE_OK) {
+        sessionStorage.setItem('utilisateur', email);
+        window.location.href = '/dashboard.html';
+      } else {
+        document.getElementById('erreur').textContent = 'Identifiants incorrects';
+      }
+    });
+  </script>
+</body>
+</html>
