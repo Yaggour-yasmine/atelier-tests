@@ -56,4 +56,9 @@ describe('API /users (avec une vraie base PostgreSQL)', () => {
     const res = await request(app).post('/users').send(utilisateur);
     expect(res.status).toBe(409);
   });
+
+  test('ne divulgue pas la technologie du serveur', async () => {
+    const res = await request(app).get('/users/1');
+    expect(res.headers['x-powered-by']).toBeUndefined();
+  });
 });
