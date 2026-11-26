@@ -11,10 +11,7 @@
     "test:cov": "jest --runInBand --coverage"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/e2e/"
-    ]
+    "testPathIgnorePatterns": ["/node_modules/", "/e2e/"]
   },
   "keywords": [],
   "author": "",
@@ -22,7 +19,6 @@
   "description": "",
   "dependencies": {
     "express": "^5.3.0",
-    "lodash": "^4.17.15",
     "pg": "^8.23.1"
   },
   "devDependencies": {
